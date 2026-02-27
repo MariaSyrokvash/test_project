@@ -5,6 +5,7 @@ export default configureStore({
         list: (state = {todos: []}, action) => {
             switch (action.type) {
                 case 'ADD_TODO': {
+                    // Avoid  state in-place
                     const newState = state;
                     newState.todos.push(action.payload);
                     return newState;

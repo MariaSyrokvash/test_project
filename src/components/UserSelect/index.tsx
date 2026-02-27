@@ -35,6 +35,7 @@ function UserSelect(props: UserSelectProps) {
             }
             return res;
         })
+        //  type mismatch:`CHANGE_TODOS` `CHANGE_TODO`
         dispatch({type: 'CHANGE_TODO', payload: changedTodos})
     }
 
