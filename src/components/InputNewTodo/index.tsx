@@ -10,7 +10,7 @@ type InputNewTodoProps = {
 type InputNewTodoState = {
     value: string
 }
-
+// transform to func component
 export class InputNewTodo extends React.Component<InputNewTodoProps, InputNewTodoState> {
     componentDidUpdate(prevProps: Readonly<InputNewTodoProps>, prevState: Readonly<InputNewTodoState>, snapshot?: any) {
         if (this.props.todoTitle !== prevProps.todoTitle) {
@@ -29,6 +29,7 @@ export class InputNewTodo extends React.Component<InputNewTodoProps, InputNewTod
 
         event.preventDefault();
 
+        // change var to let
         var val = this.state.value.trim();
 
         if (val) {

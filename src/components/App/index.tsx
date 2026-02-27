@@ -7,6 +7,7 @@ import {
 } from 'react-redux';
 
 function App() {
+  // move to MainApp
     const todos = useSelector((state: {list: { todos: any[] }}) => state.list.todos);
   return (
       // туду лист для юзеров:

@@ -9,16 +9,20 @@ type UserSelectProps = {
 
 function UserSelect(props: UserSelectProps) {
     const dispatch = useDispatch();
+
     const todos = useSelector((state: {list: { todos: any[] }}) => state.list.todos);
+
     React.useEffect(
         () => {
             console.log('userSelect');
+            // add handle error
             fetch('https://jsonplaceholder.typicode.com/users/').then(
                 (users) => users.json(),
             ).then(users => setOptions(users))
         },
         [],
     )
+    // move to top and types
     const [options, setOptions] = React.useState([]);
 
     const { idx } = props;
@@ -34,6 +38,7 @@ function UserSelect(props: UserSelectProps) {
         dispatch({type: 'CHANGE_TODO', payload: changedTodos})
     }
 
+    // add key map and type to user
     return (
         <select name="user" className={styles.user} onChange={handleChange}>
             {options.map((user: any) => <option value={user.id}>{user.name}</option>)}
@@ -41,4 +46,5 @@ function UserSelect(props: UserSelectProps) {
     );
 }
 
+// add HOC memo
 export default UserSelect;

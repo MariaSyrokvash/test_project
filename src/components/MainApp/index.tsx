@@ -21,6 +21,7 @@ type MainAppState = {
     todoTitle: string
 };
 
+// transform to func component and rename  MainApp
 class Index extends React.Component<MainAppProps, MainAppState> {
     constructor(props: MainAppProps) {
         super(props);
@@ -36,6 +37,7 @@ class Index extends React.Component<MainAppProps, MainAppState> {
 
     render() {
         const { todoTitle } = this.state;
+        // store in local state, no in window
         window.allTodosIsDone = true;
 
         this.props.todos.map(t => {
@@ -52,6 +54,7 @@ class Index extends React.Component<MainAppProps, MainAppState> {
                 <hr/>
                 <InputNewTodo todoTitle={todoTitle} onChange={this.handleTodoTitle} onSubmit={this.handleSubmitTodo}/>
                 {this.props.todos.map((t, idx) => (
+                  // add  uniq key
                     <div className={styles.todo} >
                         {t.title}
                         <UserSelect user={t.user} idx={idx}/>
@@ -80,6 +83,7 @@ class Index extends React.Component<MainAppProps, MainAppState> {
 export default connect(
     (state) => ({}),
     (dispatch) => ({
+        // add type
         addTodo: (todo: any) => {
             dispatch({type: 'ADD_TODO', payload: todo});
         },
